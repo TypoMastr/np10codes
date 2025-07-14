@@ -63,6 +63,11 @@
             padding-bottom: 20px;
             border-bottom: 1px solid var(--bg-light);
         }
+        .header-logo {
+            height: 60px;
+            max-width: 90%;
+            margin-bottom: 20px;
+        }
         header h1 {
             font-family: 'Roboto Mono', monospace;
             font-size: 2.5rem;
@@ -75,6 +80,7 @@
         header p {
             font-size: 1.1rem;
             color: var(--text-secondary);
+            margin-top: 5px;
         }
 
         /* --- Search Bar --- */
@@ -296,6 +302,9 @@
         /* --- Responsive Design --- */
         @media (max-width: 768px) {
             body { font-size: 14px; }
+            .header-logo {
+                height: 45px;
+            }
             header h1 { font-size: 2rem; }
             h2 { font-size: 1.5rem; }
             .code-grid {
@@ -314,7 +323,8 @@
 
     <div class="container">
         <header>
-            <h1>NoPixel 10-Codes Guide</h1>
+            <img src="https://www.nopixel.net/forum/data/assets/logo_default/NP-FullLogo-Light.png" alt="NoPixel Logo" class="header-logo">
+            <h1>10-Codes</h1>
             <p>Radio Codes & Procedures</p>
         </header>
 
@@ -373,7 +383,8 @@
                     <div class="code-item clickable" data-search="10-23 Arrived at the Scene"><span class="code-number">10-23</span><span class="code-description">✅📍 Arrived at the Scene</span></div>
                     <div class="code-item clickable" data-search="10-25 Report in Person"><span class="code-number">10-25</span><span class="code-description">🚶‍♂️🏢 Report in Person</span></div>
                     <div class="code-item clickable" data-search="10-31 Crime in Progress"><span class="code-number">10-31</span><span class="code-description">🏃‍♂️💨 Crime in Progress</span></div>
-                    <div class="code-item clickable" data-search="10-32 Person with a Gun"><span class="code-number">10-32</span><span class="code-description">🔫 Person with a Gun</span></div>
+                    <div class="code-item clickable" data-search="10-31A Breaking and entering"><span class="code-number">10-31A</span><span class="code-description">🚪🏃‍♂️ Breaking and entering</span></div>
+                    <div class="code-item clickable" data-search="10-32 Person with firearm"><span class="code-number">10-32</span><span class="code-description">🔫 Person with firearm</span></div>
                     <div class="code-item clickable" data-search="10-37 Investigate Suspicious Activity"><span class="code-number">10-37</span><span class="code-description">🔎 Investigate Suspicious Activity</span></div>
                     <div class="code-item clickable" data-search="10-38 Traffic Stop"><span class="code-number">10-38</span><span class="code-description">🚦🚗 Traffic Stop</span></div>
                     <div class="code-item clickable" data-search="10-41 On Duty"><span class="code-number">10-41</span><span class="code-description">🟢 On Duty</span></div>
@@ -388,6 +399,7 @@
                     <div class="code-item clickable" data-search="10-78 Need Backup (EMERGENCY)"><span class="code-number">10-78</span><span class="code-description">🚨👥 Need Backup (EMERGENCY)</span></div>
                     <div class="code-item clickable" data-search="10-80 Pursuit in Progress"><span class="code-number">10-80</span><span class="code-description">🚓💨 Pursuit in Progress</span></div>
                     <div class="code-item clickable" data-search="10-90 Robbery in Progress"><span class="code-number">10-90</span><span class="code-description">💰🏃‍♂️ Robbery in Progress</span></div>
+                    <div class="code-item clickable" data-search="10-90B Robbery of a 24/7 register in progress"><span class="code-number">10-90B</span><span class="code-description">🏪💰 Robbery of a 24/7 register in progress</span></div>
                     <div class="code-item clickable" data-search="10-91 Transport"><span class="code-number">10-91</span><span class="code-description">🚐 Transport</span></div>
                     <div class="code-item clickable" data-search="10-94 Reckless Driver"><span class="code-number">10-94</span><span class="code-description">🤪🚗 Reckless Driver</span></div>
                     <div class="code-item clickable" data-search="10-95 Suspect in Custody"><span class="code-number">10-95</span><span class="code-description">⛓️ Suspect in Custody</span></div>
