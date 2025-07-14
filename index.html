@@ -10,16 +10,30 @@
     <style>
         /* --- CSS Reset & Variables --- */
         :root {
-            --bg-dark: #111827;
-            --bg-medium: #1F2937;
-            --bg-light: #374151;
-            --accent-blue: #38bdf8;
-            --text-primary: #f8fafc;
-            --text-secondary: #9ca3af;
+            /* NoPixel UI Theme with Glow */
+            --bg-dark: #1E293B;
+            --bg-medium: #283447;
+            --bg-light: #334155;
+            --accent-primary: #2DD4BF;       /* Teal for secondary highlights */
+            --accent-secondary: #34D399;     /* Vibrant Green for main highlights & glow */
+            --text-primary: #F1F5F9;
+            --text-secondary: #94A3B8;
+
+            /* RGB versions for glow effects */
+            --accent-primary-rgb: 45, 212, 191;
+            --accent-secondary-rgb: 52, 211, 153;
+
+            /* Original Response Code Colors (Restored) */
             --code-emergency: #ef4444;
-            --code-routine: #2563eb;
+            --code-routine: #3b82f6;
             --code-clear: #22c55e;
             --code-investigate: #eab308;
+            
+            /* RGB versions for response card glows */
+            --code-emergency-rgb: 239, 68, 68;
+            --code-routine-rgb: 59, 130, 246;
+            --code-clear-rgb: 34, 197, 94;
+            --code-investigate-rgb: 234, 179, 8;
         }
         * {
             margin: 0;
@@ -52,10 +66,11 @@
         header h1 {
             font-family: 'Roboto Mono', monospace;
             font-size: 2.5rem;
-            color: var(--accent-blue);
+            color: var(--accent-secondary);
             letter-spacing: 2px;
             text-transform: uppercase;
             font-weight: 700;
+            text-shadow: 0 0 12px rgba(var(--accent-secondary-rgb), 0.7);
         }
         header p {
             font-size: 1.1rem;
@@ -66,7 +81,7 @@
         .search-container {
             position: sticky;
             top: 0;
-            background: linear-gradient(180deg, var(--bg-dark) 80%, rgba(17, 24, 39, 0) 100%);
+            background: linear-gradient(180deg, var(--bg-dark) 80%, rgba(30, 41, 59, 0) 100%);
             padding: 20px 0;
             z-index: 100;
         }
@@ -82,8 +97,8 @@
         }
         #searchInput:focus {
             outline: none;
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.4);
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(var(--accent-primary-rgb), 0.3);
         }
         .search-icon {
             position: absolute;
@@ -102,7 +117,7 @@
             margin-top: 40px;
             margin-bottom: 20px;
             padding-bottom: 10px;
-            border-bottom: 2px solid var(--accent-blue);
+            border-bottom: 2px solid var(--accent-secondary);
             display: inline-block;
         }
 
@@ -122,31 +137,34 @@
             border-radius: 8px;
             padding: 20px;
             border-left: 5px solid;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
         }
         .response-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         .response-card h3 {
             font-family: 'Roboto Mono', monospace;
             font-size: 1.4rem;
             margin-bottom: 10px;
             font-weight: 700;
+            color: var(--text-primary);
         }
         .response-card p {
-            color: var(--text-primary);
+            color: var(--text-secondary);
             font-size: 1rem;
             font-weight: 500;
         }
+        
+        /* Restored specific colors and added matching inner/outer glows */
         .code-routine { border-color: var(--code-routine); }
         .code-emergency { border-color: var(--code-emergency); }
         .code-clear { border-color: var(--code-clear); }
         .code-investigate { border-color: var(--code-investigate); }
-        .code-routine h3 { color: var(--code-routine); }
-        .code-emergency h3 { color: var(--code-emergency); }
-        .code-clear h3 { color: var(--code-clear); }
-        .code-investigate h3 { color: var(--code-investigate); }
+        
+        .code-routine:hover { box-shadow: 0 0 20px -5px rgba(var(--code-routine-rgb), 0.6), inset 0 0 15px -5px rgba(var(--code-routine-rgb), 0.3); }
+        .code-emergency:hover { box-shadow: 0 0 20px -5px rgba(var(--code-emergency-rgb), 0.6), inset 0 0 15px -5px rgba(var(--code-emergency-rgb), 0.3); }
+        .code-clear:hover { box-shadow: 0 0 20px -5px rgba(var(--code-clear-rgb), 0.6), inset 0 0 15px -5px rgba(var(--code-clear-rgb), 0.3); }
+        .code-investigate:hover { box-shadow: 0 0 20px -5px rgba(var(--code-investigate-rgb), 0.6), inset 0 0 15px -5px rgba(var(--code-investigate-rgb), 0.3); }
 
         /* --- 10-Codes Grid --- */
         .code-grid {
@@ -161,16 +179,18 @@
             padding: 10px 15px;
             border-radius: 6px;
             border: 1px solid var(--bg-light);
-            transition: background-color 0.2s ease, border-color 0.2s ease;
+            transition: all 0.2s ease;
         }
         .code-item:hover {
             background-color: var(--bg-light);
-            border-color: var(--accent-blue);
+            border-color: var(--accent-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px -3px rgba(var(--accent-secondary-rgb), 0.5), inset 0 0 10px -5px rgba(var(--accent-secondary-rgb), 0.4);
         }
         .code-number {
             font-family: 'Roboto Mono', monospace;
             font-weight: 700;
-            color: var(--accent-blue);
+            color: var(--accent-primary);
             font-size: 1.1rem;
             flex-shrink: 0;
             padding-right: 12px;
@@ -189,7 +209,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(17, 24, 39, 0.8);
+            background-color: rgba(30, 41, 59, 0.8);
             backdrop-filter: blur(5px);
             display: flex;
             justify-content: center;
@@ -208,8 +228,8 @@
             background-color: var(--bg-medium);
             padding: 40px;
             border-radius: 12px;
-            border-top: 5px solid var(--accent-blue);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-top: 5px solid var(--accent-secondary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(var(--accent-secondary-rgb), 0.2);
             text-align: center;
             max-width: 90%;
             width: 500px;
@@ -223,13 +243,14 @@
         }
         #modal-code {
             font-family: 'Roboto Mono', monospace;
-            font-size: 4rem; /* INCREASED from 3rem */
-            color: var(--accent-blue);
+            font-size: 4rem;
+            color: var(--accent-secondary);
             margin-bottom: 20px;
             line-height: 1.1;
+            text-shadow: 0 0 15px rgba(var(--accent-secondary-rgb), 0.7);
         }
         #modal-description {
-            font-size: 1.5rem; /* INCREASED from 1.25rem */
+            font-size: 1.5rem;
             line-height: 1.5;
             color: var(--text-primary);
         }
@@ -248,6 +269,29 @@
         #modal-close-btn:hover {
             color: var(--text-primary);
         }
+        
+        /* --- Toast Notification Styling --- */
+        #toast-notification {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background-color: var(--accent-secondary);
+            color: var(--bg-dark);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        #toast-notification.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
 
         /* --- Responsive Design --- */
         @media (max-width: 768px) {
@@ -258,10 +302,10 @@
                 grid-template-columns: 1fr;
             }
             #modal-code {
-                font-size: 3rem; /* Adjust for smaller screens */
+                font-size: 3rem;
             }
             #modal-description {
-                font-size: 1.2rem; /* Adjust for smaller screens */
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -311,8 +355,10 @@
             <section id="common-codes">
                 <h2>Most Common 10-Codes</h2>
                 <div class="code-grid">
+                    <div class="code-item clickable" data-search="10-2 Loud and Clear"><span class="code-number">10-2</span><span class="code-description">📡✅ Loud and Clear</span></div>
                     <div class="code-item clickable" data-search="10-3 Stop Radio Chatter"><span class="code-number">10-3</span><span class="code-description">🤫 Stop Radio Chatter</span></div>
                     <div class="code-item clickable" data-search="10-4 Acknowledgment (OK)"><span class="code-number">10-4</span><span class="code-description">👍 Acknowledgment (OK)</span></div>
+                    <div class="code-item clickable" data-search="10-6 Busy, unless urgent"><span class="code-number">10-6</span><span class="code-description">📞⏳ Busy, unless urgent</span></div>
                     <div class="code-item clickable" data-search="10-7 Out of Service"><span class="code-number">10-7</span><span class="code-description">📵 Out of Service</span></div>
                     <div class="code-item clickable" data-search="10-8 Back in Service"><span class="code-number">10-8</span><span class="code-description">🔛 Back in Service</span></div>
                     <div class="code-item clickable" data-search="10-9 Repeat"><span class="code-number">10-9</span><span class="code-description">🔁 Repeat</span></div>
@@ -353,9 +399,7 @@
                 <h2>Additional Codes (Reference Only)</h2>
                 <div class="code-grid">
                     <div class="code-item clickable" data-search="10-1 Unable to Copy"><span class="code-number">10-1</span><span class="code-description">📡❌ Unable to Copy</span></div>
-                    <div class="code-item clickable" data-search="10-2 Loud and Clear"><span class="code-number">10-2</span><span class="code-description">📡✅ Loud and Clear</span></div>
                     <div class="code-item clickable" data-search="10-5 Relay"><span class="code-number">10-5</span><span class="code-description">🗣️➡️🗣️ Relay</span></div>
-                    <div class="code-item clickable" data-search="10-6 Busy, unless urgent"><span class="code-number">10-6</span><span class="code-description">📞⏳ Busy, unless urgent</span></div>
                     <div class="code-item clickable" data-search="10-15 Civil Disturbance"><span class="code-number">10-15</span><span class="code-description">🗣️💥 Civil Disturbance</span></div>
                     <div class="code-item clickable" data-search="10-16 Domestic Problem"><span class="code-number">10-16</span><span class="code-description">🏠😠 Domestic Problem</span></div>
                     <div class="code-item clickable" data-search="10-17 Meet Complainant"><span class="code-number">10-17</span><span class="code-description">🤝🗣️ Meet Complainant</span></div>
@@ -427,6 +471,9 @@
         </div>
     </div>
 
+    <!-- Toast Notification HTML -->
+    <div id="toast-notification"></div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // --- Search Functionality ---
@@ -438,7 +485,6 @@
                 searchableItems.forEach(item => {
                     const itemText = item.getAttribute('data-search').toLowerCase();
                     if (itemText.includes(searchTerm)) {
-                        // Use 'flex' for grid items and 'grid' for response cards
                         const displayStyle = item.classList.contains('response-card') ? 'block' : 'flex';
                         item.style.display = displayStyle;
                     } else {
@@ -447,12 +493,24 @@
                 });
             });
 
-            // --- Modal Functionality ---
+            // --- Modal, Clipboard, and Toast Functionality ---
             const modalOverlay = document.getElementById('modal-overlay');
             const modalCodeEl = document.getElementById('modal-code');
             const modalDescriptionEl = document.getElementById('modal-description');
             const modalCloseBtn = document.getElementById('modal-close-btn');
             const clickableItems = document.querySelectorAll('.clickable');
+            const toast = document.getElementById('toast-notification');
+            let toastTimeout;
+
+            // Function to show the toast notification
+            const showToast = (message) => {
+                clearTimeout(toastTimeout);
+                toast.textContent = message;
+                toast.classList.add('active');
+                toastTimeout = setTimeout(() => {
+                    toast.classList.remove('active');
+                }, 2000); // Show for 2 seconds
+            };
 
             const showModal = (code, description) => {
                 modalCodeEl.textContent = code;
@@ -467,6 +525,8 @@
             clickableItems.forEach(item => {
                 item.addEventListener('click', () => {
                     let code, description;
+
+                    // Extract code and description
                     if (item.classList.contains('response-card')) {
                         code = item.querySelector('h3').innerText;
                         description = item.querySelector('p').innerText;
@@ -474,6 +534,18 @@
                         code = item.querySelector('.code-number').innerText;
                         description = item.querySelector('.code-description').innerText;
                     }
+
+                    // --- NEW: Copy to clipboard ---
+                    navigator.clipboard.writeText(code).then(() => {
+                        // On success, show confirmation toast
+                        showToast(`Copied "${code}" to clipboard!`);
+                    }).catch(err => {
+                        // Optional: Handle cases where clipboard API might fail
+                        console.error('Failed to copy text: ', err);
+                        showToast('Could not copy to clipboard.');
+                    });
+                    
+                    // Show the modal as before
                     showModal(code, description);
                 });
             });
@@ -481,7 +553,7 @@
             modalCloseBtn.addEventListener('click', hideModal);
 
             modalOverlay.addEventListener('click', (event) => {
-                // Close only if the overlay itself (the background) is clicked
+                // Close only if the overlay itself is clicked
                 if (event.target === modalOverlay) {
                     hideModal();
                 }
