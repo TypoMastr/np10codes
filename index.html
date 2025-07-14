@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoPixel 10-Codes Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+            --bg-dark: #111827; /* Dark Navy/Charcoal */
+            --bg-medium: #1F2937; /* Lighter Panel BG */
+            --bg-light: #374151;
+            --accent-blue: #38bdf8; /* Bright Sky Blue */
+            --text-primary: #f8fafc; /* Off-white */
+            --text-secondary: #9ca3af;
+            --code-emergency: #ef4444; /* Red */
+            --code-routine: #2563eb;   /* Blue */
+            --code-clear: #22c55e;     /* Green */
+            --code-investigate: #eab308; /* Yellow */
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* --- Main Layout & Header --- */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--bg-light);
+        }
+        header h1 {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        /* --- Search Bar --- */
+        .search-container {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(180deg, var(--bg-dark) 80%, rgba(17, 24, 39, 0) 100%);
+            padding: 20px 0;
+            z-index: 100;
+        }
+        #searchInput {
+            width: 100%;
+            padding: 15px 20px 15px 50px;
+            font-size: 1.1rem;
+            background-color: var(--bg-medium);
+            border: 1px solid var(--bg-light);
+            border-radius: 8px;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+        #searchInput:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.4);
+        }
+        .search-icon {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            pointer-events: none;
+        }
+
+
+        /* --- Section Titles --- */
+        h2 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-blue);
+            display: inline-block;
+        }
+
+        /* --- Response Codes Section --- */
+        .response-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .response-card {
+            background-color: var(--bg-medium);
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 5px solid;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .response-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .response-card h3 {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .response-card p {
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-weight: 500; /* Bolder description */
+        }
+        .code-routine { border-color: var(--code-routine); }
+        .code-emergency { border-color: var(--code-emergency); }
+        .code-clear { border-color: var(--code-clear); }
+        .code-investigate { border-color: var(--code-investigate); }
+        
+        .code-routine h3 { color: var(--code-routine); }
+        .code-emergency h3 { color: var(--code-emergency); }
+        .code-clear h3 { color: var(--code-clear); }
+        .code-investigate h3 { color: var(--code-investigate); }
+
+
+        /* --- 10-Codes Grid --- */
+        .code-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 15px;
+        }
+        .code-item {
+            display: flex;
+            align-items: center;
+            background-color: var(--bg-medium);
+            padding: 12px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--bg-light);
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+        .code-item:hover {
+            background-color: var(--bg-light);
+            border-color: var(--accent-blue);
+        }
+        .code-number {
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 700;
+            color: var(--accent-blue);
+            font-size: 1.1rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+            width: 90px;
+        }
+        .code-description {
+            color: var(--text-primary);
+            font-weight: 500; /* Bolder description */
+        }
+        
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            body { font-size: 14px; }
+            header h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            .code-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>NoPixel 10-Codes Guide</h1>
+            <p>Radio Codes & Procedures</p>
+        </header>
+
+        <main>
+            <div class="search-container">
+                 <div class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </div>
+                <input type="text" id="searchInput" placeholder="Search codes or descriptions (e.g., 10-50 or Vehicle)...">
+            </div>
+
+            <section id="response-codes">
+                <h2>Response Codes</h2>
+                <div class="response-grid">
+                    <div class="response-card code-routine" data-search="Code 1 Routine Call No Lights or Sirens">
+                        <h3>Code 1</h3>
+                        <p>🤫 Routine Call - No Lights or Sirens</p>
+                    </div>
+                    <div class="response-card code-routine" data-search="Code 2 Routine Call Lights On Airhorn at intersections">
+                        <h3>Code 2</h3>
+                        <p>🚓 Routine Call - Lights On, Airhorn at intersections</p>
+                    </div>
+                    <div class="response-card code-emergency" data-search="Code 3 EMERGENCY Lights and Sirens On">
+                        <h3>Code 3</h3>
+                        <p>🚨 EMERGENCY - Lights and Sirens On</p>
+                    </div>
+                    <div class="response-card code-clear" data-search="Code 4 All Clear">
+                        <h3>Code 4</h3>
+                        <p>✅ All Clear</p>
+                    </div>
+                    <div class="response-card code-investigate" data-search="Code 6 Investigating the Area">
+                        <h3>Code 6</h3>
+                        <p>🔎 Investigating the Area</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="common-codes">
+                <h2>Most Common 10-Codes</h2>
+                <div class="code-grid">
+                    <!-- Column 1 -->
+                    <div class="code-item" data-search="10-3 Stop Radio Chatter"><span class="code-number">10-3</span><span class="code-description">🤫 Stop Radio Chatter</span></div>
+                    <div class="code-item" data-search="10-4 Acknowledgment (OK)"><span class="code-number">10-4</span><span class="code-description">👍 Acknowledgment (OK)</span></div>
+                    <div class="code-item" data-search="10-7 Out of Service"><span class="code-number">10-7</span><span class="code-description">📵 Out of Service</span></div>
+                    <div class="code-item" data-search="10-8 Back in Service"><span class="code-number">10-8</span><span class="code-description">🔛 Back in Service</span></div>
+                    <div class="code-item" data-search="10-9 Repeat"><span class="code-number">10-9</span><span class="code-description">🔁 Repeat</span></div>
+                    <div class="code-item" data-search="10-10 Fight in Progress"><span class="code-number">10-10</span><span class="code-description">🥊 Fight in Progress</span></div>
+                    <div class="code-item" data-search="10-12 Standby"><span class="code-number">10-12</span><span class="code-description">⏸️ Standby</span></div>
+                    <div class="code-item" data-search="10-13A OFFICER DOWN (EMERGENCY)"><span class="code-number">10-13A</span><span class="code-description">👮‍♂️⬇️🚨 OFFICER DOWN (EMERGENCY)</span></div>
+                    <div class="code-item" data-search="10-13B OFFICER DOWN"><span class="code-number">10-13B</span><span class="code-description">👮‍♂️⬇️ OFFICER DOWN</span></div>
+                    <div class="code-item" data-search="10-14A MEDIC DOWN (EMERGENCY)"><span class="code-number">10-14A</span><span class="code-description">🚑⬇️🚨 MEDIC DOWN (EMERGENCY)</span></div>
+                    <div class="code-item" data-search="10-14B MEDIC DOWN"><span class="code-number">10-14B</span><span class="code-description">🚑⬇️ MEDIC DOWN</span></div>
+                    <div class="code-item" data-search="10-20 Location"><span class="code-number">10-20</span><span class="code-description">📍 Location</span></div>
+                    <div class="code-item" data-search="10-22 Disregard"><span class="code-number">10-22</span><span class="code-description">🗑️ Disregard</span></div>
+                    <div class="code-item" data-search="10-23 Arrived at the Scene"><span class="code-number">10-23</span><span class="code-description">✅📍 Arrived at the Scene</span></div>
+                    
+                    <!-- Column 2 -->
+                    <div class="code-item" data-search="10-25 Report in Person"><span class="code-number">10-25</span><span class="code-description">🚶‍♂️🏢 Report in Person</span></div>
+                    <div class="code-item" data-search="10-31 Crime in Progress"><span class="code-number">10-31</span><span class="code-description">🏃‍♂️💨 Crime in Progress</span></div>
+                    <div class="code-item" data-search="10-32 Person with a Gun"><span class="code-number">10-32</span><span class="code-description">🔫 Person with a Gun</span></div>
+                    <div class="code-item" data-search="10-38 Traffic Stop"><span class="code-number">10-38</span><span class="code-description">🚦🚗 Traffic Stop</span></div>
+                    <div class="code-item" data-search="10-41 On Duty"><span class="code-number">10-41</span><span class="code-description">🟢 On Duty</span></div>
+                    <div class="code-item" data-search="10-42 Off Duty"><span class="code-number">10-42</span><span class="code-description">🔴 Off Duty</span></div>
+                    <div class="code-item" data-search="10-47 Injured Person"><span class="code-number">10-47</span><span class="code-description">🤕 Injured Person</span></div>
+                    <div class="code-item" data-search="10-50 Vehicle Accident"><span class="code-number">10-50</span><span class="code-description">🚗💥 Vehicle Accident</span></div>
+                    <div class="code-item" data-search="10-52 EMS Needed"><span class="code-number">10-52</span><span class="code-description">🚑 EMS Needed</span></div>
+                    <div class="code-item" data-search="10-60 Carjacking"><span class="code-number">10-60</span><span class="code-description">🚗💨🤺 Carjacking</span></div>
+                    <div class="code-item" data-search="10-71 Shots Fired"><span class="code-number">10-71</span><span class="code-description">💥🔫 Shots Fired</span></div>
+
+                    <!-- Column 3 -->
+                    <div class="code-item" data-search="10-76 Enroute"><span class="code-number">10-76</span><span class="code-description">➡️ Enroute</span></div>
+                    <div class="code-item" data-search="10-77 Need Backup (non emergency)"><span class="code-number">10-77</span><span class="code-description">👥 Need Backup (non emergency)</span></div>
+                    <div class="code-item" data-search="10-78 Need Backup (EMERGENCY)"><span class="code-number">10-78</span><span class="code-description">🚨👥 Need Backup (EMERGENCY)</span></div>
+                    <div class="code-item" data-search="10-80 Pursuit in Progress"><span class="code-number">10-80</span><span class="code-description">🚓💨 Pursuit in Progress</span></div>
+                    <div class="code-item" data-search="10-90 Robbery in Progress"><span class="code-number">10-90</span><span class="code-description">💰🏃‍♂️ Robbery in Progress</span></div>
+                    <div class="code-item" data-search="10-91 Transport"><span class="code-number">10-91</span><span class="code-description">🚐 Transport</span></div>
+                    <div class="code-item" data-search="10-94 Reckless Driver"><span class="code-number">10-94</span><span class="code-description">🤪🚗 Reckless Driver</span></div>
+                    <div class="code-item" data-search="10-95 Suspect in Custody"><span class="code-number">10-95</span><span class="code-description">⛓️ Suspect in Custody</span></div>
+                    <div class="code-item" data-search="10-98 Jail Break"><span class="code-number">10-98</span><span class="code-description">🏃‍♂️⛓️ Jail Break</span></div>
+                    <div class="code-item" data-search="10-99 Stolen Vehicle"><span class="code-number">10-99</span><span class="code-description">🚗❓ Stolen Vehicle</span></div>
+                </div>
+            </section>
+
+            <section id="additional-codes">
+                <h2>Additional Codes (Reference Only)</h2>
+                <div class="code-grid">
+                    <!-- Column 1 -->
+                    <div class="code-item" data-search="10-1 Unable to Copy"><span class="code-number">10-1</span><span class="code-description">📡❌ Unable to Copy</span></div>
+                    <div class="code-item" data-search="10-2 Loud and Clear"><span class="code-number">10-2</span><span class="code-description">📡✅ Loud and Clear</span></div>
+                    <div class="code-item" data-search="10-5 Relay"><span class="code-number">10-5</span><span class="code-description">🗣️➡️🗣️ Relay</span></div>
+                    <div class="code-item" data-search="10-6 Busy, unless urgent"><span class="code-number">10-6</span><span class="code-description">📞⏳ Busy, unless urgent</span></div>
+                    <div class="code-item" data-search="10-15 Civil Disturbance"><span class="code-number">10-15</span><span class="code-description">🗣️💥 Civil Disturbance</span></div>
+                    <div class="code-item" data-search="10-16 Domestic Problem"><span class="code-number">10-16</span><span class="code-description">🏠😠 Domestic Problem</span></div>
+                    <div class="code-item" data-search="10-17 Meet Complainant"><span class="code-number">10-17</span><span class="code-description">🤝🗣️ Meet Complainant</span></div>
+                    <div class="code-item" data-search="10-18 Quickly"><span class="code-number">10-18</span><span class="code-description">⚡ Quickly</span></div>
+                    <div class="code-item" data-search="10-19 Return to"><span class="code-number">10-19</span><span class="code-description">↩️ Return to</span></div>
+                    <div class="code-item" data-search="10-21 Call by Telephone"><span class="code-number">10-21</span><span class="code-description">📞 Call by Telephone</span></div>
+                    <div class="code-item" data-search="10-24 Assignment Completed"><span class="code-number">10-24</span><span class="code-description">✅📝 Assignment Completed</span></div>
+                    <div class="code-item" data-search="10-26 Detaining Subject Expedite"><span class="code-number">10-26</span><span class="code-description">🏃‍♂️➡️⛓️ Detaining Subject Expedite</span></div>
+                    <div class="code-item" data-search="10-27 Driver's License Info"><span class="code-number">10-27</span><span class="code-description">💳🆔 Driver's License Info</span></div>
+                    <div class="code-item" data-search="10-28 Vehicle Registration Info"><span class="code-number">10-28</span><span class="code-description">📄🚗 Vehicle Registration Info</span></div>
+                    <div class="code-item" data-search="10-29 Warrant Check"><span class="code-number">10-29</span><span class="code-description">🔎📄 Warrant Check</span></div>
+                    <div class="code-item" data-search="10-30 Unnecessary use of radio"><span class="code-number">10-30</span><span class="code-description">📻🚫 Unnecessary use of radio</span></div>
+                    <div class="code-item" data-search="10-34 Riot"><span class="code-number">10-34</span><span class="code-description">🔥👥 Riot</span></div>
+                    <div class="code-item" data-search="10-35 Major crime alert"><span class="code-number">10-35</span><span class="code-description">📢🚨 Major crime alert</span></div>
+                    <div class="code-item" data-search="10-36 Correct time"><span class="code-number">10-36</span><span class="code-description">⏰ Correct time</span></div>
+                    <div class="code-item" data-search="10-37 Investigate susp. vehicle"><span class="code-number">10-37</span><span class="code-description">🔎🚗 Investigate susp. vehicle</span></div>
+                    <div class="code-item" data-search="10-39 Urgent - use light & siren"><span class="code-number">10-39</span><span class="code-description">⚡🚨 Urgent - use light & siren</span></div>
+                    <div class="code-item" data-search="10-40 Silent run - no light/siren"><span class="code-number">10-40</span><span class="code-description">🤫🚗 Silent run - no light/siren</span></div>
+                    <div class="code-item" data-search="10-43 Information"><span class="code-number">10-43</span><span class="code-description">ℹ️ Information</span></div>
+                    <div class="code-item" data-search="10-44 Permission to leave for"><span class="code-number">10-44</span><span class="code-description">✅➡️ Permission to leave for</span></div>
+                    <div class="code-item" data-search="10-45 Animal carcass"><span class="code-number">10-45</span><span class="code-description">🦌☠️ Animal carcass</span></div>
+                    <div class="code-item" data-search="10-46 Assist motorist"><span class="code-number">10-46</span><span class="code-description">🛠️🚗 Assist motorist</span></div>
+                    <div class="code-item" data-search="10-48 Traffic standard repair at"><span class="code-number">10-48</span><span class="code-description">🛠️🚦 Traffic standard repair at __</span></div>
+                    <div class="code-item" data-search="10-49 Traffic light out at"><span class="code-number">10-49</span><span class="code-description">🚦❌ Traffic light out at __</span></div>
+                    <div class="code-item" data-search="10-53 Road blocked at"><span class="code-number">10-53</span><span class="code-description">🚧 Road blocked at __</span></div>
+                    <div class="code-item" data-search="10-54 Livestock on highway"><span class="code-number">10-54</span><span class="code-description">🐄🛣️ Livestock on highway</span></div>
+
+                    <!-- Column 2 -->
+                    <div class="code-item" data-search="10-55 Intoxicated driver"><span class="code-number">10-55</span><span class="code-description">🍺🚗 Intoxicated driver</span></div>
+                    <div class="code-item" data-search="10-56 Intoxicated pedestrian"><span class="code-number">10-56</span><span class="code-description">🍺🚶‍♂️ Intoxicated pedestrian</span></div>
+                    <div class="code-item" data-search="10-57 Hit & Run (F, PI, PD)"><span class="code-number">10-57</span><span class="code-description">💥🏃‍♂️ Hit & Run (F, PI, PD)</span></div>
+                    <div class="code-item" data-search="10-58 Direct traffic"><span class="code-number">10-58</span><span class="code-description">👉🚗 Direct traffic</span></div>
+                    <div class="code-item" data-search="10-59 Convoy or escort"><span class="code-number">10-59</span><span class="code-description">🛡️🚗 Convoy or escort</span></div>
+                    <div class="code-item" data-search="10-61 Personnel in area"><span class="code-number">10-61</span><span class="code-description">👥📍 Personnel in area</span></div>
+                    <div class="code-item" data-search="10-62 Reply to message"><span class="code-number">10-62</span><span class="code-description">💬↩️ Reply to message</span></div>
+                    <div class="code-item" data-search="10-63 Prepare to make written copy"><span class="code-number">10-63</span><span class="code-description">✍️ Prepare to make written copy</span></div>
+                    <div class="code-item" data-search="10-64 Message for local delivery"><span class="code-number">10-64</span><span class="code-description">📦➡️ Message for local delivery</span></div>
+                    <div class="code-item" data-search="10-65 Net message assignment"><span class="code-number">10-65</span><span class="code-description">🌐📝 Net message assignment</span></div>
+                    <div class="code-item" data-search="10-66 Message cancellation"><span class="code-number">10-66</span><span class="code-description">🗑️💬 Message cancellation</span></div>
+                    <div class="code-item" data-search="10-67 Clear for net message"><span class="code-number">10-67</span><span class="code-description">✅🌐 Clear for net message</span></div>
+                    <div class="code-item" data-search="10-68 Dispatch information"><span class="code-number">10-68</span><span class="code-description">📢ℹ️ Dispatch information</span></div>
+                    <div class="code-item" data-search="10-69 Message received"><span class="code-number">10-69</span><span class="code-description">✅💬 Message received</span></div>
+                    <div class="code-item" data-search="10-70 Explosion"><span class="code-number">10-70</span><span class="code-description">💥🔥 Explosion</span></div>
+                    <div class="code-item" data-search="10-73 Advise Status"><span class="code-number">10-73</span><span class="code-description">📊❓ Advise Status</span></div>
+                    
+                    <!-- Column 3 -->
+                    <div class="code-item" data-search="10-74 Negative"><span class="code-number">10-74</span><span class="code-description">❌ Negative</span></div>
+                    <div class="code-item" data-search="10-75 In contact with"><span class="code-number">10-75</span><span class="code-description">🤝 In contact with __</span></div>
+                    <div class="code-item" data-search="10-79 Notify coroner"><span class="code-number">10-79</span><span class="code-description">☠️📞 Notify coroner</span></div>
+                    <div class="code-item" data-search="10-81 Breath test"><span class="code-number">10-81</span><span class="code-description">😮‍💨🧪 Breath test</span></div>
+                    <div class="code-item" data-search="10-82 Reserve lodging"><span class="code-number">10-82</span><span class="code-description">🏨 Reserve lodging</span></div>
+                    <div class="code-item" data-search="10-83 Work school crossing at"><span class="code-number">10-83</span><span class="code-description">🏫🚶‍♀️ Work school crossing at __</span></div>
+                    <div class="code-item" data-search="10-84 If meeting advise ETA"><span class="code-number">10-84</span><span class="code-description">🤝⏰ If meeting __ advise ETA</span></div>
+                    <div class="code-item" data-search="10-85 Delayed due to"><span class="code-number">10-85</span><span class="code-description">⏳ Delayed due to</span></div>
+                    <div class="code-item" data-search="10-86 Officer/operator on duty"><span class="code-number">10-86</span><span class="code-description">👮‍♂️🔛 Officer/operator on duty</span></div>
+                    <div class="code-item" data-search="10-87 Pick up/distribute checks"><span class="code-number">10-87</span><span class="code-description">💵✉️ Pick up/distribute checks</span></div>
+                    <div class="code-item" data-search="10-88 Present telephone # of"><span class="code-number">10-88</span><span class="code-description">📞#️⃣ Present telephone # of __</span></div>
+                    <div class="code-item" data-search="10-89 Bomb threat"><span class="code-number">10-89</span><span class="code-description">💣 Bomb threat</span></div>
+                    <div class="code-item" data-search="10-93 Blockade"><span class="code-number">10-93</span><span class="code-description">🧱🚧 Blockade</span></div>
+                    <div class="code-item" data-search="10-96 Mental subject"><span class="code-number">10-96</span><span class="code-description">🧠❓ Mental subject</span></div>
+                    <div class="code-item" data-search="10-97 Check (test) signal"><span class="code-number">10-97</span><span class="code-description">📡✔️ Check (test) signal</span></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('searchInput');
+            const searchableItems = document.querySelectorAll('[data-search]');
+
+            searchInput.addEventListener('input', function (e) {
+                const searchTerm = e.target.value.toLowerCase();
+
+                searchableItems.forEach(item => {
+                    const itemText = item.getAttribute('data-search').toLowerCase();
+                    if (itemText.includes(searchTerm)) {
+                        item.style.display = '';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
