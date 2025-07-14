@@ -133,7 +133,7 @@
         .response-card p {
             color: var(--text-primary);
             font-size: 1rem;
-            font-weight: 500; /* Bolder description */
+            font-weight: 500;
         }
         .code-routine { border-color: var(--code-routine); }
         .code-emergency { border-color: var(--code-emergency); }
@@ -149,14 +149,14 @@
         /* --- 10-Codes Grid --- */
         .code-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 10px 15px;
         }
         .code-item {
             display: flex;
             align-items: center;
             background-color: var(--bg-medium);
-            padding: 12px 15px;
+            padding: 10px 15px;
             border-radius: 6px;
             border: 1px solid var(--bg-light);
             transition: background-color 0.2s ease, border-color 0.2s ease;
@@ -170,13 +170,15 @@
             font-weight: 700;
             color: var(--accent-blue);
             font-size: 1.1rem;
-            margin-right: 15px;
             flex-shrink: 0;
-            width: 90px;
+            /* New separator style */
+            padding-right: 12px;
+            margin-right: 12px;
+            border-right: 1px solid var(--bg-light);
         }
         .code-description {
             color: var(--text-primary);
-            font-weight: 500; /* Bolder description */
+            font-weight: 500;
         }
         
         /* --- Responsive Design --- */
@@ -235,7 +237,6 @@
             <section id="common-codes">
                 <h2>Most Common 10-Codes</h2>
                 <div class="code-grid">
-                    <!-- Column 1 -->
                     <div class="code-item" data-search="10-3 Stop Radio Chatter"><span class="code-number">10-3</span><span class="code-description">🤫 Stop Radio Chatter</span></div>
                     <div class="code-item" data-search="10-4 Acknowledgment (OK)"><span class="code-number">10-4</span><span class="code-description">👍 Acknowledgment (OK)</span></div>
                     <div class="code-item" data-search="10-7 Out of Service"><span class="code-number">10-7</span><span class="code-description">📵 Out of Service</span></div>
@@ -250,8 +251,6 @@
                     <div class="code-item" data-search="10-20 Location"><span class="code-number">10-20</span><span class="code-description">📍 Location</span></div>
                     <div class="code-item" data-search="10-22 Disregard"><span class="code-number">10-22</span><span class="code-description">🗑️ Disregard</span></div>
                     <div class="code-item" data-search="10-23 Arrived at the Scene"><span class="code-number">10-23</span><span class="code-description">✅📍 Arrived at the Scene</span></div>
-                    
-                    <!-- Column 2 -->
                     <div class="code-item" data-search="10-25 Report in Person"><span class="code-number">10-25</span><span class="code-description">🚶‍♂️🏢 Report in Person</span></div>
                     <div class="code-item" data-search="10-31 Crime in Progress"><span class="code-number">10-31</span><span class="code-description">🏃‍♂️💨 Crime in Progress</span></div>
                     <div class="code-item" data-search="10-32 Person with a Gun"><span class="code-number">10-32</span><span class="code-description">🔫 Person with a Gun</span></div>
@@ -263,8 +262,6 @@
                     <div class="code-item" data-search="10-52 EMS Needed"><span class="code-number">10-52</span><span class="code-description">🚑 EMS Needed</span></div>
                     <div class="code-item" data-search="10-60 Carjacking"><span class="code-number">10-60</span><span class="code-description">🚗💨🤺 Carjacking</span></div>
                     <div class="code-item" data-search="10-71 Shots Fired"><span class="code-number">10-71</span><span class="code-description">💥🔫 Shots Fired</span></div>
-
-                    <!-- Column 3 -->
                     <div class="code-item" data-search="10-76 Enroute"><span class="code-number">10-76</span><span class="code-description">➡️ Enroute</span></div>
                     <div class="code-item" data-search="10-77 Need Backup (non emergency)"><span class="code-number">10-77</span><span class="code-description">👥 Need Backup (non emergency)</span></div>
                     <div class="code-item" data-search="10-78 Need Backup (EMERGENCY)"><span class="code-number">10-78</span><span class="code-description">🚨👥 Need Backup (EMERGENCY)</span></div>
@@ -281,7 +278,6 @@
             <section id="additional-codes">
                 <h2>Additional Codes (Reference Only)</h2>
                 <div class="code-grid">
-                    <!-- Column 1 -->
                     <div class="code-item" data-search="10-1 Unable to Copy"><span class="code-number">10-1</span><span class="code-description">📡❌ Unable to Copy</span></div>
                     <div class="code-item" data-search="10-2 Loud and Clear"><span class="code-number">10-2</span><span class="code-description">📡✅ Loud and Clear</span></div>
                     <div class="code-item" data-search="10-5 Relay"><span class="code-number">10-5</span><span class="code-description">🗣️➡️🗣️ Relay</span></div>
@@ -312,8 +308,6 @@
                     <div class="code-item" data-search="10-49 Traffic light out at"><span class="code-number">10-49</span><span class="code-description">🚦❌ Traffic light out at __</span></div>
                     <div class="code-item" data-search="10-53 Road blocked at"><span class="code-number">10-53</span><span class="code-description">🚧 Road blocked at __</span></div>
                     <div class="code-item" data-search="10-54 Livestock on highway"><span class="code-number">10-54</span><span class="code-description">🐄🛣️ Livestock on highway</span></div>
-
-                    <!-- Column 2 -->
                     <div class="code-item" data-search="10-55 Intoxicated driver"><span class="code-number">10-55</span><span class="code-description">🍺🚗 Intoxicated driver</span></div>
                     <div class="code-item" data-search="10-56 Intoxicated pedestrian"><span class="code-number">10-56</span><span class="code-description">🍺🚶‍♂️ Intoxicated pedestrian</span></div>
                     <div class="code-item" data-search="10-57 Hit & Run (F, PI, PD)"><span class="code-number">10-57</span><span class="code-description">💥🏃‍♂️ Hit & Run (F, PI, PD)</span></div>
@@ -330,8 +324,6 @@
                     <div class="code-item" data-search="10-69 Message received"><span class="code-number">10-69</span><span class="code-description">✅💬 Message received</span></div>
                     <div class="code-item" data-search="10-70 Explosion"><span class="code-number">10-70</span><span class="code-description">💥🔥 Explosion</span></div>
                     <div class="code-item" data-search="10-73 Advise Status"><span class="code-number">10-73</span><span class="code-description">📊❓ Advise Status</span></div>
-                    
-                    <!-- Column 3 -->
                     <div class="code-item" data-search="10-74 Negative"><span class="code-number">10-74</span><span class="code-description">❌ Negative</span></div>
                     <div class="code-item" data-search="10-75 In contact with"><span class="code-number">10-75</span><span class="code-description">🤝 In contact with __</span></div>
                     <div class="code-item" data-search="10-79 Notify coroner"><span class="code-number">10-79</span><span class="code-description">☠️📞 Notify coroner</span></div>
